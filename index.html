@@ -1,46 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital@1&family=Mukta:wght@200&family=Poiret+One&family=Raleway:wght@200;400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital@1&family=Mukta:wght@200&family=Poiret+One&family=Raleway:wght@200;400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Local Finds</title>
 </head>
+
 <body>
-        <header>
-            <nav class="Nav Bar container-fluid" id="Top Bar"> 
-              <label class="logo"><i>LocalFinds</i></label>
-                <ul>
-                    <li>
-                        <a href="#localeats">Local Restaurants</a>
-                    </li>
-                    <li>
-                        <a href="#localbrews">Local Brews</a>
-                    </li>
-                    <li>
-                        <a href="#uber">Uber</a>
-                    </li>
-                </ul>
-            </nav> 
-        </header>
-        <main>
-            <div class="intro">
-                <h1>
-                    New to the area? <br> Let's find something local!
-                 </h1>
-            </div>
-            <div class="city container-fluid">
-                 <img src="./assets/images/most-instagrammable-nyc-spots.jpeg">
-            </div>
-        </main>
-    
+    <header>
+        <nav class="Nav Bar container-fluid" id="Top Bar">
+            <label class="logo"><i>LocalFinds</i></label>
+            <ul>
+                <li>
+                    <a href="#box">Local Restaurants</a>
+                </li>
+                <li>
+                    <a href="#box">Local Brews</a>
+                </li>
+                <li>
+                    <a href="#box">Uber</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="intro">
+            <h1>
+                New to the area? <br> Let's find something local!
+            </h1>
+        </div>
+        <div class="city container-fluid rounded">
+            <img src="./assets/images/most-instagrammable-nyc-spots.jpeg" class="rounded">
+        </div>
+
+        <form class="search-container">
+            <textarea class="userInput"></textarea>
+            <button class="searchBtn" type="=submit">Search</button>
+        </form>
+        <div class="box" id="map">
+            <p>This is a box.</p>
+        </div>
+    </main>
+
     <script src="./assets/js/script.js"></script>
- 
+
 
 </body>
+
 </html>
