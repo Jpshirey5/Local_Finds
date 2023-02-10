@@ -16,49 +16,55 @@
 </head>
 
 <body>
-    <header>
+    <header class="header-with-background">
         <nav class="Nav Bar container-fluid" id="Top Bar">
             <label class="logo"><i>LocalFinds</i></label>
             <ul>
                 <li>
-                    <a href="#box">Local Restaurants</a>
+                    <a href="#map"><i>Local Restaurants</i></a>
                 </li>
                 <li>
-                    <a href="#box">Local Brews</a>
+                    <a href="#map"><i>Local Brews</i></a>
                 </li>
                 <li>
-                    <a href="#box">Uber</a>
+                    <a href="#map"><i>Uber</i></a>
                 </li>
             </ul>
         </nav>
-    </header>
-
-    <main>
         <div class="intro">
             <h1>
                 New to the area? <br> Let's find something local!
             </h1>
         </div>
-        <div class="city container-fluid rounded">
-            <img src="./assets/images/most-instagrammable-nyc-spots.jpeg" class="rounded">
+    </header>
+
+    <main>
+        <section class="pre-search">
+            <h3>Let's Explore New Places</h3>
+        </section>
+
+        <div class="section-with-background">
+            <form class="search-container">
+                <input class="userInput"></input>
+                <input class="userInput"></input>
+                <br>
+                <button class="searchBtn" type="submit">Search</button>
+            </form>
+            <div class="box" id="map">
+                <p>The map goes here.</p>
+            </div>
         </div>
 
-        <div class="pre-search">
-            <h2>Explore New Places</h2>
-        </div>
-        <form class="search-container">
-            <input class="userInput"></input>
-            <br>
-            <button class="searchBtn" type="submit">Search</button>
-        </form>
-        <div class="box" id="map">
-            <p>The map goes here.</p>
-        </div>
     </main>
+
+    <footer class="closing">
+        Local Finds LLC
+    </footer>
 
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/yelp.js"></script>
-    
+
 
 </body>
+
 </html>
