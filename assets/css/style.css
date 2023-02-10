@@ -3,42 +3,38 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(
-    to right,
-    navy 0%,
-    navy 50%,
-    white 50%,
-    white 100%
-  );
+    background: white
 }
 
 nav {
-    background-color: navy;
     height: 100px;
     width: 100%;
+    background: transparent;
 }
 
 label.logo {
-color: white;
-font-size: 20px;
-line-height: 100px;
-margin-left: 50px;
-font-family: 'Fira Sans', sans-serif 'Mukta', sans-serif 'Poiret One', cursive 'Raleway', sans-serif;;
+    color: white;
+    font-size: 20px;
+    line-height: 100px;
+    margin-left: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
 
 nav ul {
     float: right;
     margin-right: 25px;
-
 }
 
 nav ul li {
     display: inline-flex;
     color: white;
+    text-decoration: italic;
     line-height: 100px;
     margin-right: 50px;
     margin-left: 50px;
@@ -47,56 +43,73 @@ nav ul li {
 nav ul li a {
     color: white;
     text-decoration: none;
-    
+
 }
 
 /* nav ul li a:hover {
     color: gold;
 } */
 
-.intro {
-    margin-left: 50px;
-    margin-top: 50px;
-    font-size: 45px;
-    color: whitesmoke;
+.header-with-background {
+    background-image: url("/Users/johnshirey/Bootcamp/GitHub-Repos/Project_1/assets/images/most-instagrammable-nyc-spots.jpeg");
+    background-size: cover;
+    background-position: center;
+    height: 750px;
     width: 100%;
-     height: 10vh; 
-    background: linear-gradient(
-    to right,
-    navy 0%,
-    navy 50%,
-    white 0%,
-    white 50%
-  );
 }
 
-.city {
-    float: right;
-    margin-right: 35px;
-    position: relative;
-}
-.pre-search {
-    margin-top: 900px;
+.intro {
+    font-size: 75px;
     text-align: center;
-    color: gray;
-    font-size: 30px;
+    color: white;
+    display: block;
+    margin-top: 200px;
 }
+ .pre-search {
+    padding: 25px;
+    text-align: center;
+    color: black;
+    background: white;
+    font-size: 25px;
+} 
+
+.section-with-background {
+    background-image: url("/Users/johnshirey/Bootcamp/GitHub-Repos/Project_1/assets/images/304313-1600x1066-beer-food-pairing.jpeg");
+    background-size: cover;
+    background-position: center;
+    height: 750px;
+    width: 100%;
+}
+
 
 .userInput {
-    margin-top: 50px;
+    margin-top: 100px;
     text-align: center;
 }
 
 .box {
-    width: 700px;
-    height: 500px;
+    width: 500px;
+    height: 300px;
     background-color: white;
     border: 1px solid black;
     text-align: center;
     padding: 20px;
-    margin: 50px auto;
-  }
-  
-  .search-container {
+    margin: auto;
+    margin-top: 50px;
+
+}
+
+.search-container {
     text-align: center;
-  }
+}
+
+.searchBtn {
+    margin-top: 10px;
+}
+
+footer {
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    font-size: 15px;
+}
