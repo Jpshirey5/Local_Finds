@@ -1,5 +1,6 @@
 var yelpData;
 var radarData;
+var searchBtn = document.querySelector('.searchBtn');
 const yelpPull = {
   method: 'GET',
   headers: {
@@ -16,20 +17,67 @@ const radarPull = {
     Authorization: 'prj_test_sk_ed1220433b48d0a1871616fb8d24d7a8a45a34d9'
   }
 };
-var city = "orlando"; //placeholder for user input
-var place = "starbucks"; //placeholder for user input
-//the following functions will take the location input and business input and run it through getYelp
-//which will fetch datat from both Yelp and Radar for the relavent search inputs
-function getYelp (town, business) {
-fetch('https://cors-anywhere.herokuapp.com/api.yelp.com/v3/businesses/search?location='+town+'&term='+business+'&sort_by=best_match&limit=20', yelpPull)
+var town = document.getElementsByClassName('userInput')[0];//.trim();
+var business = document.getElementsByClassName('userInput')[1];//.trim();
+
+//the following functions will take the location and business input and run it through getYelp
+//which will fetch datat from both Yelp and Radar for the relevant search inputs
+function getYelp (event) {
+event.preventDefault();
+/*
+var townName = town.value;
+var businessName =business.value;
+console.log(townName);
+console.log(businessName);
+*/
+
+//The following two functions make the user inputs url friendly
+var townUrl = (town = '') => {
+   let res = '';
+   const { length } = town;
+   for(let i = 0; i < length; i++){
+      const char = town[i];
+      if(char === ','){
+        res += '%2C';
+      }else if(!(char === ' ')){
+         res += char;
+      }else{
+         res += '%20';
+      }
+   }
+   return res;
+};
+var businessUrl = (business = '') => {
+   let res = '';
+   const { length } = business;
+   for(let i = 0; i < length; i++){
+      const char = business[i];
+      if(char === ','){
+        res += '%2C';
+      }else if(!(char === ' ')){
+         res += char;
+      }else{
+         res += '%20';
+      }
+   }
+   return res;
+};
+console.log(townUrl(town.value));
+console.log(businessUrl(business.value));
+//return;
+
+fetch('https://cors-anywhere.herokuapp.com/api.yelp.com/v3/businesses/search?location='+townUrl(town.value)+'&term='+businessUrl(business.value)+'&sort_by=best_match&limit=20', yelpPull)
   .then(response => response.json())
   .then(function (response) {
     console.log(response)
     yelpData = response
+    var brand = business.toString();
     var radarLong = yelpData.businesses[0].coordinates.longitude.toString();
     var radarLat = yelpData.businesses[0].coordinates.latitude.toString();
-    var brand = business.toString();
-    getRadar (brand, radarLat, radarLong)
+    //can do a function does a for loop here to display the relevant data for yelpData
+    //before some gets possibly overwritten by the data in radarData
+    yelpDisplay ();
+    getRadar (brand, radarLat, radarLong);
   }
   )
   .catch(err => console.error(err));
@@ -41,9 +89,17 @@ fetch('https://api.radar.io/v1/search/places?chains='+company+'&near='+xCord+'%2
   .then(function (response) {
     console.log(response)
     radarData = response
+    //as mentioned in line 76 for yelpData we can do a for loop here to
+    //display the data for radarData if need be
+
   }
   )
   .catch(err => console.error(err));
 }
 
-getYelp (city, place)
+function yelpDisplay() {
+
+}
+
+searchBtn.addEventListener('click', getYelp);
+//getYelp (city, place);
