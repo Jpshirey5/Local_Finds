@@ -51,7 +51,7 @@ nav ul li a {
 } */
 
 .header-with-background {
-    background-image: url("/Users/johnshirey/Bootcamp/GitHub-Repos/Project_1/assets/images/most-instagrammable-nyc-spots.jpeg");
+    background-image: url("./../images/most-instagrammable-nyc-spots.jpeg");
     background-size: cover;
     background-position: center;
     height: 750px;
@@ -74,7 +74,7 @@ nav ul li a {
 } 
 
 .section-with-background {
-    background-image: url("/Users/johnshirey/Bootcamp/GitHub-Repos/Project_1/assets/images/304313-1600x1066-beer-food-pairing.jpeg");
+    background-image: url("./../images/304313-1600x1066-beer-food-pairing.jpeg");
     background-size: cover;
     background-position: center;
     height: 750px;
@@ -113,3 +113,43 @@ footer {
     text-align: center;
     font-size: 15px;
 }
+
+/* Gina added the below section to style the modal window*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* #placeNearBy{
+    background-color: gray;
+  } */
