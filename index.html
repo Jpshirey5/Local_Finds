@@ -12,6 +12,12 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- Gina added this section to make the map show in the screen -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <title>Local Finds</title>
 </head>
 
@@ -45,13 +51,21 @@
 
         <div class="section-with-background">
             <form class="search-container">
-                <input class="userInput"></input>
-                <input class="userInput"></input>
+                <input class="userInput" placeholder="City name"></input>
+                <input class="userInput" id="placeNearBy" placeholder="Near By place"></input> <!--Maybe we can make this readonly-->
                 <br>
                 <button class="searchBtn" type="submit">Search</button>
             </form>
             <div class="box" id="map">
                 <p>The map goes here.</p>
+            </div>
+            <!--Gina added this div, this is a modal window that will display any messages
+            we need, such as error messages if the user doesn't enter a value in the text-->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p id="modalMessage"></p>
+                </div>
             </div>
         </div>
 
@@ -63,7 +77,6 @@
 
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/yelp.js"></script>
-
 
 </body>
 
