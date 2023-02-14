@@ -1,6 +1,6 @@
-#local finds
+# local finds
 
-This application is desighned to help users broaden their nightlife routine and experience something new. It uses multiple web APIs to bring multiple applications into one. 
+This application is designed to help users broaden their nightlife routine and experience something new. It uses multiple web APIs to bring multiple applications into one. 
 
 
 ## Authors
@@ -36,6 +36,8 @@ we are a team of full stack developers who are currently building a solid portfo
 
  - [geofence](https://api.radar.io/v1/search/geofences?near=28.606464,-81.5235072)
  - [materializeCSS](https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css)
+ - [Leaflet](https://tile.openstreetmap.org/{z}/{x}/{y}.png)
+ - [yelp](https://cors-anywhere.herokuapp.com/api.yelp.com/v3/businesses/search?location)
 
 
 ## Screenshots
