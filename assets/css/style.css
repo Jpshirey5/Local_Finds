@@ -14,7 +14,7 @@ body {
 nav {
     height: 100px;
     width: 100%;
-    background: transparent;
+    background: rgba(0,0,0,.15);
 }
 
 label.logo {
@@ -51,7 +51,7 @@ nav ul li a {
 } */
 
 .header-with-background {
-    background-image: url("./../images/most-instagrammable-nyc-spots.jpeg");
+    background-image: url("./../images/cityscape-paris-hd-wallpaper-5120x2160.jpeg.crdownload");
     background-size: cover;
     background-position: center;
     height: 750px;
