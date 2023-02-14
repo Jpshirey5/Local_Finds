@@ -47,6 +47,8 @@ nav ul {
     display: block;
     font-size: 25px;
     margin-top: 150px;
+    margin: auto;
+   /*  margin-right: 100px; */
 }
 
 nav ul li {

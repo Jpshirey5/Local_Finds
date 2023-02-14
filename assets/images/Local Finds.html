@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071)file:///Users/johnshirey/Bootcamp/GitHub-Repos/Project_1/index.html#map -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./Local Finds_files/css2" rel="stylesheet">
+    <link rel="stylesheet" href="./Local Finds_files/reset.css">
+    <link rel="stylesheet" href="./Local Finds_files/style.css">
+
+    <!-- Gina added this section to make the map show in the screen -->
+    <link rel="stylesheet" href="./Local Finds_files/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="">
+    <script src="./Local Finds_files/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <title>Local Finds</title>
+</head>
+
+<body>
+    <header class="header-with-background">
+        <nav class="nav bar container-fluid" id="Top Bar">
+<!--             <label class="logo"><i>LocalFinds</i></label>
+ -->            <!-- <ul>
+                <li>
+                    <a href="#map"><i>Local Restaurants</i></a>
+                </li>
+                <li>
+                    <a href="#map"><i>Local Brews</i></a>
+                </li>
+                <li>
+                    <a href="#map"><i>Uber</i></a>
+                </li>
+            </ul> -->
+        </nav>
+        <div class="intro">
+            <h1>
+                New to the area? <br> Let's find something local!
+            </h1>
+        </div>
+        <div class="nav">
+            <nav class="nav bar container-fluid" id="Top Bar">
+                <ul>
+                    <li>
+                        <a href="file:///Users/johnshirey/Bootcamp/GitHub-Repos/Project_1/index.html#map"><i>Local Restaurants</i></a>
+                    </li>
+                    <li>
+                        <a href="file:///Users/johnshirey/Bootcamp/GitHub-Repos/Project_1/index.html#map"><i>Local Brews</i></a>
+                    </li>
+                    <li>
+                        <a href="file:///Users/johnshirey/Bootcamp/GitHub-Repos/Project_1/index.html#map"><i>Uber</i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="pre-search">
+            <h3>Let's Explore New Places</h3>
+        </section>
+
+        <div class="section-with-background">
+            <form class="search-container">
+                <input class="userInput" placeholder="City name">
+                <input class="userInput" id="placeNearBy" placeholder="Near By place">
+                <!--Maybe we can make this readonly-->
+                <br>
+                <button class="searchBtn" type="submit">Search</button>
+            </form>
+            <div class="box leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" id="map" tabindex="0" style="position: relative;">
+                <p>The map goes here.</p>
+            <div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 19; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" src="./Local Finds_files/3417.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(203px, -93px, 0px); opacity: 1;"><img alt="" src="./Local Finds_files/3418.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(203px, 163px, 0px); opacity: 1;"><img alt="" src="./Local Finds_files/3417(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-53px, -93px, 0px); opacity: 1;"><img alt="" src="./Local Finds_files/3417(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(459px, -93px, 0px); opacity: 1;"><img alt="" src="./Local Finds_files/3418(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-53px, 163px, 0px); opacity: 1;"><img alt="" src="./Local Finds_files/3418(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(459px, 163px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-marker-pane"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(574510px, 874994px, 0px) scale(4096);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="file:///Users/johnshirey/Bootcamp/GitHub-Repos/Project_1/index.html#" title="Zoom in" role="button" aria-label="Zoom in" aria-disabled="false"><span aria-hidden="true">+</span></a><a class="leaflet-control-zoom-out" href="file:///Users/johnshirey/Bootcamp/GitHub-Repos/Project_1/index.html#" title="Zoom out" role="button" aria-label="Zoom out" aria-disabled="false"><span aria-hidden="true">−</span></a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com/" title="A JavaScript library for interactive maps"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" class="leaflet-attribution-flag"><path fill="#4C7BE1" d="M0 0h12v4H0z"></path><path fill="#FFD500" d="M0 4h12v3H0z"></path><path fill="#E0BC00" d="M0 7h12v1H0z"></path></svg> Leaflet</a> <span aria-hidden="true">|</span> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a></div></div></div></div>
+            <!--Gina added this div, this is a modal window that will display any messages
+            we need, such as error messages if the user doesn't enter a value in the text-->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">×</span>
+                    <p id="modalMessage"></p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="closing">
+        Local Finds LLC
+    </footer>
+
+    <script src="./Local Finds_files/script.js"></script>
+    <script src="./Local Finds_files/yelp.js"></script>
+
+
+
+</body></html>
