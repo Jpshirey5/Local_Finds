@@ -3,6 +3,9 @@ var span = document.getElementsByClassName("close")[0];
 var globalData = {};
 var yelpData;
 var radarData;
+var lat;
+var lng;
+var radarUrl = 'https://api.radar.io/v1/search/autocomplete?query=';
 var searchBtn = document.querySelector('.searchBtn');
 const yelpPull = {
   method: 'GET',
@@ -26,18 +29,18 @@ var business = document.getElementsByClassName('userInput')[1];
 //Sets the map to Orlando, Florida as default
 var map = L.map('map').setView([28.5384, -81.3789], 13);
 
-//Radar's Api Key
-var apiKey = 'prj_test_sk_ed1220433b48d0a1871616fb8d24d7a8a45a34d9';
-
 //Radar's url
 var url = 'https://api.radar.io/v1/search/autocomplete?query=';
-//var url2 = 'https://api.radar.io/v1/search/autocomplete?query=';
+
 var searchBtn = document.querySelector('.searchBtn');
 
+navigator.geolocation.getCurrentPosition(successDetectedLocation, 
+    errorLocation, {
+    enableHighAccuracy: true
+})
 
-
-function getYelp (event) {
-    event.preventDefault();
+function getYelp() {
+    //this helps convert the search result into a url friendly input
     var townUrl = (town = '') => {
        let res = '';
        const { length } = town;
@@ -68,22 +71,16 @@ function getYelp (event) {
        }
        return res;
     };
-    console.log(townUrl(town.value));
-    console.log(businessUrl(business.value));
-    //return;
-    
+
     fetch('https://cors-anywhere.herokuapp.com/api.yelp.com/v3/businesses/search?location='+townUrl(town.value)+'&term='+businessUrl(business.value)+'&sort_by=best_match&limit=20', yelpPull)
       .then(response => response.json())
       .then(function (response) {
         console.log(response)
         yelpData = response
-        var brand = business.toString();
-        var radarLong = yelpData.businesses[0].coordinates.longitude.toString();
-        var radarLat = yelpData.businesses[0].coordinates.latitude.toString();
         //can do a function does a for loop here to display the relevant data for yelpData
         //before some gets possibly overwritten by the data in radarData
-        yelpDisplay ();
-        getRadar (brand, radarLat, radarLong);
+        //yelpDisplay ();
+        getRadar (town);
       }
       )
       .catch(err => console.error(err));
@@ -93,8 +90,8 @@ function handleSearch(event) {
     event.preventDefault();
 
     //User input: city or place
-    var cityEntered = document.querySelectorAll('.userInput')[0].value;
-    var placeNearByEntered = document.querySelectorAll('.userInput')[1].value;
+    var cityEntered = town.value;
+    var placeNearByEntered = business.value;
 
     if (!cityEntered && !placeNearByEntered) {
         // If the input text is invalid, show the modal with an error message
@@ -103,7 +100,7 @@ function handleSearch(event) {
         return null;
       }
 
-    getApi(cityEntered, placeNearByEntered);
+    getYelp();
     
 
 }
@@ -119,41 +116,21 @@ window.onclick = function(event) {
     }
 }
 
-function getApi(userInput, userInput2){
-
-    //Radar.com gets the place or city's coordinates that will be displayed in the map
-    const options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          "Access-Control-Allow-Origin" : "*",
-          Authorization: apiKey
-        }
-      };
-
-      var queryUrl;
-      //Create queryUrl
-      if (userInput){ //If city has value, but the place nearby is empty
-        queryUrl = url + userInput;
-      }
-      
-      fetch(queryUrl, options)
-        .then(response => response.json())
-        .then(function (data) {
-            //my code goes here
-            console.log(data);
-            var lat = data.addresses[0].latitude;
-            var lng = data.addresses[0].longitude;
-            
-            setUserEnteredLocation(lat, lng);
-
-            var geofence = 'https://api.radar.io/v1/search/geofences?near=28.606464,-81.5235072'// + lat + ',' + lng;
-            console.log('geofence ' + geofence);
-            console.log(options);
-
-            var placeNearBy = document.getElementById('placeNearBy');
-            placeNearBy.readOnly = false;
-            placeNearBy.setAttribute('style', 'background-color: white');
+function getRadar(userInput){
+    var queryUrl;
+    //Create queryUrl
+    if (userInput){ //If city has value, but the place nearby is empty
+      queryUrl = radarUrl + userInput;
+    }
+    
+    fetch(queryUrl, radarPull)
+      .then(response => response.json())
+      .then(function (data) {
+          //my code goes here
+          console.log(data);          
+          lat = yelpData.businesses[0].coordinates.latitude;
+          lng = yelpData.businesses[0].coordinates.longitude;
+          setUserEnteredLocation(lat, lng);
 
             //Below are the user tracked location
             // console.log(globalData.latitude);
@@ -165,11 +142,6 @@ function getApi(userInput, userInput2){
 
 }
 
-navigator.geolocation.getCurrentPosition(successDetectedLocation, 
-    errorLocation, {
-    enableHighAccuracy: true
-})
-
 function successDetectedLocation(position){
     console.log(position)
     map.setView([position.coords.latitude, position.coords.longitude], 13)
@@ -177,6 +149,10 @@ function successDetectedLocation(position){
     placeNearBy.setAttribute('style', 'background-color: white');
     globalData.latitude = position.coords.latitude;
     globalData.longitude = position.coords.longitude;
+}
+
+function leafletClicker(){
+    
 }
 
 function errorLocation(){
@@ -192,22 +168,11 @@ function setUserEnteredLocation(posLatitude, posLongitude){
     map.setView([posLatitude, posLongitude], 13)
 }
 
-function getRadar (company, xCord, yCord) { //I'm trying to figure out how to get the values from getYelp to work in here
-    fetch('https://api.radar.io/v1/search/places?chains='+company+'&near='+xCord+'%2C'+yCord+'&radius=10000', radarPull)
-      .then(response => response.json())
-      .then(function (response) {
-        console.log(response)
-        radarData = response
-        //as mentioned in line 76 for yelpData we can do a for loop here to
-        //display the data for radarData if need be
-    
-      }
-      )
-      .catch(err => console.error(err));
-    }
-    function yelpDisplay() {
+//for loop of Displayed results can be down in this function, which executes when the search results are submitted
+/*function yelpDisplay() {
+    for (i < 5, yelpData.business[i], i++){
 
     }
-    
-searchBtn.addEventListener('click', getYelp);
+}*/
+
 searchBtn.addEventListener('click', handleSearch);
