@@ -17,9 +17,9 @@ const radarPull = {
     Authorization: 'prj_test_sk_ed1220433b48d0a1871616fb8d24d7a8a45a34d9'
   }
 };
-var town = document.getElementsByClassName('userInput')[0];//.trim();
-var business = document.getElementsByClassName('userInput')[1];//.trim();
-
+var town = document.getElementsByClassName('userInput')[0];
+var business = document.getElementsByClassName('userInput')[1];
+//
 //the following functions will take the location and business input and run it through getYelp
 //which will fetch datat from both Yelp and Radar for the relevant search inputs
 function getYelp (event) {
