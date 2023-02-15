@@ -2,11 +2,10 @@ var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 var globalData = {};
 var yelpData;
-var radarData;
 var lat;
 var lng;
-var radarUrl = 'https://api.radar.io/v1/search/autocomplete?query=';
 var searchBtn = document.querySelector('.searchBtn');
+var resultsContainer = document.getElementById('results');
 const yelpPull = {
   method: 'GET',
   headers: {
@@ -15,23 +14,10 @@ const yelpPull = {
     Authorization: 'Bearer JK-RqzXoJPyuvbC0_JQi-xzJH6o2Cx-3tsAEJsOZTWMstIYA93d9ydWjehbT09mEsDG_hnFb3_ooZ0Ha7_Yz-m4ICG3LcfGkcWriLAcKvFJbYyiwvqFP-NUYd0DkY3Yx'
   }
 };
-const radarPull = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      "Access-Control-Allow-Origin": "*", //this may be needed
-      Authorization: 'prj_test_sk_ed1220433b48d0a1871616fb8d24d7a8a45a34d9'
-    }
-  };
 var town = document.getElementsByClassName('userInput')[0];
 var business = document.getElementsByClassName('userInput')[1];
-
 //Sets the map to Orlando, Florida as default
 var map = L.map('map').setView([28.5384, -81.3789], 13);
-
-//Radar's url
-var url = 'https://api.radar.io/v1/search/autocomplete?query=';
-
 var searchBtn = document.querySelector('.searchBtn');
 
 navigator.geolocation.getCurrentPosition(successDetectedLocation, 
@@ -79,8 +65,8 @@ function getYelp() {
         yelpData = response
         //can do a function does a for loop here to display the relevant data for yelpData
         //before some gets possibly overwritten by the data in radarData
-        //yelpDisplay ();
-        getRadar (town);
+        yelpDisplay ();
+        getLeaflet ();
       }
       )
       .catch(err => console.error(err));
@@ -116,18 +102,8 @@ window.onclick = function(event) {
     }
 }
 
-function getRadar(userInput){
-    var queryUrl;
-    //Create queryUrl
-    if (userInput){ //If city has value, but the place nearby is empty
-      queryUrl = radarUrl + userInput;
-    }
-    
-    fetch(queryUrl, radarPull)
-      .then(response => response.json())
-      .then(function (data) {
-          //my code goes here
-          console.log(data);          
+function getLeaflet(){
+     
           lat = yelpData.businesses[0].coordinates.latitude;
           lng = yelpData.businesses[0].coordinates.longitude;
           setUserEnteredLocation(lat, lng);
@@ -135,16 +111,11 @@ function getRadar(userInput){
             //Below are the user tracked location
             // console.log(globalData.latitude);
             // console.log(globalData.longitude);
-
-        })
-        .catch(err => console.error(err));
-
-
 }
 
 function successDetectedLocation(position){
     console.log(position)
-    map.setView([position.coords.latitude, position.coords.longitude], 13)
+    map.setView([position.coords.latitude, position.coords.longitude], 19)
     placeNearBy.readOnly = false;
     placeNearBy.setAttribute('style', 'background-color: white');
     globalData.latitude = position.coords.latitude;
@@ -165,14 +136,23 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 function setUserEnteredLocation(posLatitude, posLongitude){
-    map.setView([posLatitude, posLongitude], 13)
+    map.setView([posLatitude, posLongitude], 19)
 }
 
 //for loop of Displayed results can be down in this function, which executes when the search results are submitted
-/*function yelpDisplay() {
-    for (i < 5, yelpData.business[i], i++){
-
+function yelpDisplay() {
+    var bLocation;
+    bName = document.createElement('h3');
+    bName.textContent = business.value;
+    resultsContainer.append(bName);
+    for (var i = 0; i < yelpData.businesses.length; i++) {
+        bLocation = yelpData.businesses[i].location.display_address;
+        console.log(bLocation);
+        bAddress = document.createElement('p');
+        //bPhoto = ;
+        bAddress.textContent = bLocation[0] + ", " + bLocation[1];
+        resultsContainer.append(bAddress);
     }
-}*/
+}
 
 searchBtn.addEventListener('click', handleSearch);
