@@ -14,14 +14,15 @@ body {
 nav {
     height: 100px;
     width: 100%;
-    background: rgba(0,0,0,.15);
+    background: transparent;
 }
 
 label.logo {
     color: white;
-    font-size: 20px;
+    font-size: 35px;
     line-height: 100px;
     margin-left: 50px;
+    margin-top: 20px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 }
@@ -51,7 +52,7 @@ nav ul li a {
 } */
 
 .header-with-background {
-    background-image: url("./../images/cityscape-paris-hd-wallpaper-5120x2160.jpeg.crdownload");
+    background-image: url("./../images/cityscape-paris-hd-wallpaper-5120x2160.jpeg");
     background-size: cover;
     background-position: center;
     height: 750px;
@@ -99,11 +100,22 @@ nav ul li a {
 
 }
 
+/*Added this container for the search results that appear below the map*/
+.PeanutButter {
+    width: 85%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
 .search-container {
     text-align: center;
 }
 
 .searchBtn {
+    margin-top: 10px;
+}
+.PSearchBtn {
     margin-top: 10px;
 }
 
@@ -148,6 +160,13 @@ footer {
     color: black;
     text-decoration: none;
     cursor: pointer;
+  }
+  ol{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    margin-top: 15px;
+
   }
 
   /* #placeNearBy{
