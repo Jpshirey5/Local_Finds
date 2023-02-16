@@ -140,6 +140,7 @@ function setUserEnteredLocation(posLatitude, posLongitude){
 }
 
 //for loop of Displayed results can be down in this function, which executes when the search results are submitted
+//Reference: Module 6, lesson 9
 function yelpDisplay() {
     var bLocation;
     bName = document.createElement('h3');
