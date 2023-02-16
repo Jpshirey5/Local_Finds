@@ -11,8 +11,9 @@
         href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital@1&family=Mukta:wght@200&family=Poiret+One&family=Raleway:wght@200;400&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/reset.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-
     <!-- Gina added this section to make the map show in the screen -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
         integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
@@ -23,57 +24,63 @@
 
 <body>
     <header class="header-with-background">
-        <nav class="nav bar container-fluid" id="Top Bar">
+       <a href="#new-places"><label class="logo"><i>LocalFinds</i></label></a>
+        <!--nav class="transparent" id="Top Bar">
              <label class="logo"><i>LocalFinds</i></label>
-        </nav>
-        <div class="intro">
-            <h1>
-                New to the area? <br> Let's find something local!
-            </h1>
+           <ul>
+                <li>
+                    <a href="#map"><i>Local Restaurants</i></a>
+                </li>
+                <li>
+                    <a href="#map"><i>Local Brews</i></a>
+                </li>
+                <li>
+                    <a href="#map"><i>Uber</i></a>
+                </li>
+            </ul> -->
+        <!--/nav-->
         </div>
-        <div class="nav">
-            <nav class="nav bar container-fluid" id="Top Bar">
-                <ul>
-                    <li>
-                        <a href="#map"><i>Local Restaurants</i></a>
+        <div class="intro container">
+            <a href="#new-places"><h1 class="card-panel grey darken-4 white-text">
+                New to the area? <br> Let's find something local!
+            </h1></a>
+        </div>
+        <div class="">
+            <!--nav class="nav bar container-fluid" id="Top Bar">
+                <ul class="">
+                    <li class="row col s3">
+                        <a class="teal lighten-2 btn-large waves-effect waves-light black-text nav" href="#map"><i>Restaurants</i></a>
                     </li>
-                    <li>
-                        <a href="#map"><i>Local Brews</i></a>
+                    <li class="row col s3">
+                        <a class="teal lighten-2 btn-large waves-effect waves-light black-text nav" href="#map"><i>Brews</i></a>
                     </li>
-                    <li>
-                        <a href="#map"><i>Uber</i></a>
+                    <li class="row col s3">
+                        <a class="teal lighten-2 btn-large waves-effect waves-light black-text nav" href="#map"><i>Uber</i></a>
                     </li>
-                </ul>
+                </ul-->
             </nav>
         </div>
     </header>
 
     <main>
         <section class="pre-search">
-            <h3>Let's Explore New Places</h3>
+            <h3 id="new-places">Let's Explore New Places</h3>
         </section>
 
         <div class="section-with-background">
-            <form class="search-container">
-                <input class="userInput" placeholder="City name"></input>
-                <input class="userInput" id="placeNearBy" placeholder="Near By place"></input>
+            <form class="search-container row">
+                <input class="userInput col s6 white-text" placeholder="Enter City name"></input>
+                <input class="userInput col s6 white-text" id="placeNearBy" placeholder="Enter Near By place"></input>
                 <!--Maybe we can make this readonly-->
                 <br>
-                <button class="searchBtn" type="submit">Search</button>
+                <button class="searchBtn waves-effect waves-light btn" type="submit">Search</button>
+                <button class="PSearchBtn waves-effect waves-light btn" type="submit">Previous Search</button>
             </form>
             <div class="box" id="map">
                 <p>The map goes here.</p>
             </div>
-            <!--Show the results of the search-->
-            <div class="show-results">
-                <div class="showPhotos">
-    
-                </div>
-                
-                <div class="showReviews">
-    
-                </div>
-            </div>
+             <!--Results of yelpData go in the div below-->
+             <ol type="1" class="PeanutButter container card teal white-text" id="results"></ol>
             <!--Gina added this div, this is a modal window that will display any messages
             we need, such as error messages if the user doesn't enter a value in the text-->
             <div id="myModal" class="modal">
@@ -85,12 +92,37 @@
         </div>
 
     </main>
+    <footer class="page-footer teal">
+        <div class="container">
+          <div class="row">
+            <div class="col l6 s12">
+              <h5 class="white-text">Local Finds LLC</h5>
+              <p class="grey-text text-lighten-4">Make sure every night is the best night of your life.</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+              <h5 class="white-text">Links</h5>
+              <ul>
+                <li><a class="grey-text text-lighten-3" href="#top">Top of page</a></li>
+                <li><a class="grey-text text-lighten-3" href="#map">Local Restaurants</a></li>
+                <li><a class="grey-text text-lighten-3" href="#map">Local Brews</a></li>
+                <li><a class="grey-text text-lighten-3" href="https://www.uber.com/">Uber</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <div class="container">
+          © 2023 Copyright Text
+          </div>
+        </div>
+      </footer>
 
-    <footer class="closing">
+    <!--footer class="closing">
         Local Finds LLC
-    </footer>
+    </footer-->
 
     <script src="./assets/js/script.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 </body>
 
