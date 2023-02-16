@@ -165,7 +165,8 @@ function yelpDisplay() {
 searchBtn.addEventListener("click", handleSearch);
 var PSearchBtn = document.querySelector(".PSearchBtn")
 console.log(PSearchBtn)
-PSearchBtn.addEventListener("click", function() {
+PSearchBtn.addEventListener("click", function(event) {
+    event.preventDefault()
     town.value = localStorage.getItem("cityEntered")
     console.log(localStorage.getItem("cityEntered"))
     business.value = localStorage.getItem("placeNearByEntered")
