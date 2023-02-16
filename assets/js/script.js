@@ -1,10 +1,12 @@
 var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 var globalData = {};
+var resultLength = 5;
 var yelpData;
 var lat;
 var lng;
 var searchBtn = document.querySelector('.searchBtn');
+var mapClick = document.querySelector('.PeanutButter');
 var resultsContainer = document.getElementById('results');
 const yelpPull = {
 method: 'GET',
@@ -19,6 +21,9 @@ var business = document.getElementsByClassName('userInput')[1];
 //Sets the map to Orlando, Florida as default
 var map = L.map('map').setView([28.5384, -81.3789], 13);
 var searchBtn = document.querySelector('.searchBtn');
+var localTown;
+var localBusiness;
+var showCoords = [];
 
 navigator.geolocation.getCurrentPosition(successDetectedLocation, 
   errorLocation, {
@@ -27,6 +32,7 @@ navigator.geolocation.getCurrentPosition(successDetectedLocation,
 
 function getYelp() {
   //this helps convert the search result into a url friendly input
+
   var townUrl = (town = '') => {
       let res = '';
       const { length } = town;
@@ -79,6 +85,10 @@ function handleSearch(event) {
   var cityEntered = town.value;
   var placeNearByEntered = business.value;
 
+  localStorage.setItem("cityEntered", cityEntered)
+  localStorage.setItem("placeNearByEntered", placeNearByEntered)
+
+
   if (!cityEntered && !placeNearByEntered) {
       // If the input text is invalid, show the modal with an error message
       modalMessage.innerHTML = "Please enter a city or a place to search.";
@@ -105,7 +115,7 @@ function getLeaflet(){
   lng = yelpData.businesses[0].coordinates.longitude;
   setUserEnteredLocation(lat, lng);
 
-  for (var a = 0; a < 10; a++) {
+  for (var a = 0; a < resultLength; a++) {
     var tempLat = yelpData.businesses[a].coordinates.latitude;
     var tempLon = yelpData.businesses[a].coordinates.longitude;
     L.marker([tempLat, tempLon]).addTo(map);
@@ -145,18 +155,70 @@ function setUserEnteredLocation(posLatitude, posLongitude){
 //for loop of Displayed results can be down in this function, which executes when the search results are submitted
 //Reference: Module 6, lesson 9
 function yelpDisplay() {
+  var mapPin;
   var bLocation;
   bName = document.createElement('h3');
   bName.textContent = business.value;
   resultsContainer.append(bName);
 
-  for (var i = 0; i < yelpData.businesses.length; i++) {
+  for (var i = 0; i < resultLength; i++) {
+    mapPin = yelpData.businesses[i].coordinates;
       bLocation = yelpData.businesses[i].location.display_address;
       bPhone = yelpData.businesses[i].phone;
-      bAddress = document.createElement('li');
-      bAddress.textContent = bLocation[0] + ", " + bLocation[1] + " Phone: " + bPhone;
-      resultsContainer.append(bAddress);     
+      bAddress = document.createElement('div');
+      bLink = document.createElement('span');
+      bLink.className = "pin";
+      bLink.textContent = [i+1] + ") " + bLocation[0] + ", " + bLocation[1];
+      bAddress.innerText = " Phone: " + bPhone;
+      bAddress.prepend(bLink);
+      resultsContainer.append(bAddress);
+      document.getElementsByClassName("pin")[i].addEventListener('click', mapLink);
+      
+      /*
+      bAddress.title = "map";
+      bAddress.href = "#map";
+      document.body.appendChild(bAddress);
+      */
   }
 }
 
+function mapLink(event) {
+  event.preventDefault();
+
+  const buttons = document.getElementsByClassName("pin");
+
+  const buttonPressed = e => {
+    //console.log(e.target.textContent);
+    holdValue = JSON.stringify(e.target.textContent);
+    console.log(holdValue[1]);
+    q = holdValue[1];
+    mapPin = yelpData.businesses[q-1].coordinates;
+    setUserEnteredLocation(mapPin.latitude, mapPin.longitude);
+
+  }
+  
+  for (let button of buttons) {
+    button.addEventListener("click", buttonPressed);
+  }
+
+  //setUserEnteredLocation(mapPin.latitude, mapPin.longitude);
+}
+
+//function mapLink(event) {
+  //event.preventDefault();
+  //mapPin = yelpData.businesses.coordinates;
+  //setUserEnteredLocation(mapPin.latitude, mapPin.longitude);
+//}
+
+
+//localTown.innerHTML(localStorage.getItem("cityEntered"));
+//localBusiness.textContent(localStorage.getItem("placeNearByEntered"));
+
 searchBtn.addEventListener('click', handleSearch);
+//mapClick.addEventListener('click', mapLink);
+/*
+document.querySelector('.pastSearchBtn').addEventListener('click', function(){
+  town.innerText(localStorage.getItem("cityEntered"));
+  business.innerText(localStorage.getItem("placeNearByEntered"));
+})
+*/

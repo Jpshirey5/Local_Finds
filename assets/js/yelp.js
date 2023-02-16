@@ -84,7 +84,7 @@ fetch('https://cors-anywhere.herokuapp.com/api.yelp.com/v3/businesses/search?loc
 }
   
 function getRadar (company, xCord, yCord) { //I'm trying to figure out how to get the values from getYelp to work in here
-fetch('https://api.radar.io/v1/search/places?chains='+company+'&near='+xCord+'%2C'+yCord+'&radius=10000', radarPull)
+fetch('https://api.radar.io/v1/search/places?chains='+company+'&near='+xCord+'%2C'+yCord, radarPull)
   .then(response => response.json())
   .then(function (response) {
     console.log(response)
