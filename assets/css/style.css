@@ -1,15 +1,3 @@
-
-@keyframes transitionIn {
-    from {
-        opacity: 0;
-        transform: translateY('-10deg');
-    }
-    to {
-        opacity: 1;
-        transform: translateY('0');
-    }
-}
-
 * {
     padding: 0;
     margin: 0;
@@ -26,26 +14,22 @@ body {
 nav {
     height: 100px;
     width: 100%;
-    animation: transitionIn 5s;
+    background: transparent;
 }
 
 label.logo {
     color: white;
-    background: transparent;
-    display: block;
-    font-size: 25px;
+    font-size: 35px;
     line-height: 100px;
     margin-left: 50px;
+    margin-top: 20px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
 
 nav ul {
-    text-align: center;
-    background: rgba(0,0,0,.5);
-    width: 100%;
-    display: block;
-    font-size: 25px;
-    margin-top: 150px;
+    float: right;
+    margin-right: 25px;
 }
 
 nav ul li {
@@ -57,15 +41,15 @@ nav ul li {
     margin-left: 50px;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 nav ul li a {
     color: white;
     text-decoration: none;
+
 }
 
+/* nav ul li a:hover {
+    color: gold;
+} */
 
 .header-with-background {
     background-image: url("./../images/cityscape-paris-hd-wallpaper-5120x2160.jpg");
@@ -73,7 +57,6 @@ nav ul li a {
     background-position: center;
     height: 750px;
     width: 100%;
-    
 }
 
 .intro {
@@ -81,17 +64,14 @@ nav ul li a {
     text-align: center;
     color: white;
     display: block;
-    margin-top: 50px;
-    animation: transitionIn 5s;
+    margin-top: 200px;
 }
  .pre-search {
-    padding: 75px;
+    padding: 25px;
     text-align: center;
     color: black;
     background: white;
-    font-size: 50px;
-    animation: slide;
-    animation: transitionIn 10s;
+    font-size: 25px;
 } 
 
 .section-with-background {
@@ -117,13 +97,25 @@ nav ul li a {
     padding: 20px;
     margin: auto;
     margin-top: 50px;
+
 }
+
+/*Added this container for the search results that appear below the map*/
+.PeanutButter {
+    width: 85%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
 .search-container {
     text-align: center;
 }
 
 .searchBtn {
+    margin-top: 10px;
+}
+.PSearchBtn {
     margin-top: 10px;
 }
 
@@ -168,6 +160,13 @@ footer {
     color: black;
     text-decoration: none;
     cursor: pointer;
+  }
+  ol{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    margin-top: 15px;
+
   }
 
   /* #placeNearBy{
