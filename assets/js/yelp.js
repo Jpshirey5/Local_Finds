@@ -6,9 +6,11 @@ const yelpPull = {
   headers: {
     accept: 'application/json',
     "Access-Control-Allow-Origin": "*", //this may be needed
-    Authorization: 'Bearer JK-RqzXoJPyuvbC0_JQi-xzJH6o2Cx-3tsAEJsOZTWMstIYA93d9ydWjehbT09mEsDG_hnFb3_ooZ0Ha7_Yz-m4ICG3LcfGkcWriLAcKvFJbYyiwvqFP-NUYd0DkY3Yx'
+    //Authorization: 'Bearer JK-RqzXoJPyuvbC0_JQi-xzJH6o2Cx-3tsAEJsOZTWMstIYA93d9ydWjehbT09mEsDG_hnFb3_ooZ0Ha7_Yz-m4ICG3LcfGkcWriLAcKvFJbYyiwvqFP-NUYd0DkY3Yx'
+    Authorization:'DNRF-cJoa4-fu5qYvD-U3sE0H8iXtmnQywMG4AezfjYVFBE6FA5Kkt8p1-G_7US8dWPca-pmH_K1QImB4l8tmi_U8Sm5ZAtgStDiy1e-eL_k_9dqt2AJK7KQ93_pY3Yx'
   }
 };
+
 const radarPull = {
   method: 'GET',
   headers: {
@@ -62,11 +64,14 @@ var businessUrl = (business = '') => {
    }
    return res;
 };
-console.log(townUrl(town.value));
-console.log(businessUrl(business.value));
+console.log(townUrl(town.value));//Miami
+console.log(businessUrl(business.value));//Starbucks
 //return;
 
-fetch('https://cors-anywhere.herokuapp.com/api.yelp.com/v3/businesses/search?location='+townUrl(town.value)+'&term='+businessUrl(business.value)+'&sort_by=best_match&limit=20', yelpPull)
+var completeQuery = 'https://cors-anywhere.herokuapp.com/api.yelp.com/v3/businesses/search?location='+townUrl(town.value)+'&term='+businessUrl(business.value)+'&sort_by=best_match&limit=20', yelpPull
+console.log(completeQuery);
+fetch(completeQuery)
+
   .then(response => response.json())
   .then(function (response) {
     console.log(response)
